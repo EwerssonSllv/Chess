@@ -14,7 +14,7 @@
             this.line = line;
         }
 
-        public Position toPosition() {
+        public Position ToPosition() {
             return new Position(8 - line, column - 'a');
         }
 
