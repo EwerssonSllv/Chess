@@ -9,7 +9,7 @@
             get; set;
         }
 
-        public ChessPosition(char column, int line) {
+        public ChessPosition(int line, char column) {
             this.column = column;
             this.line = line;
         }

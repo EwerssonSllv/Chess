@@ -9,17 +9,23 @@ namespace Chess {
 
             try {
 
-                Board board = new Board(8, 8);
+                Match match = new Match();
 
-                board.Place(new Tower(Color.BLACK, board), new Position(0, 1));
-                board.Place(new Tower(Color.BLACK, board), new Position(1, 3));
-                board.Place(new King(Color.BLACK, board), new Position(0, 2));
 
-                board.Place(new Tower(Color.WHITE, board), new Position(2, 1));
-                board.Place(new Tower(Color.WHITE, board), new Position(5, 3));
-                board.Place(new King(Color.WHITE, board), new Position(2, 2));
+                while (!match.ending) {
 
-                Screen.printBoard(board);
+                    Console.Clear();
+
+                    Screen.PrintBoard(match.board);
+
+                    Console.Write("Origin: ");
+                    Position origin = Screen.ReadChessPosition().ToPosition();
+                    Console.Write("Destiny: ");
+                    Position destiny = Screen.ReadChessPosition().ToPosition();
+
+
+                    match.Move(origin, destiny);
+                }
 
             } catch(BoardException e) {
                 Console.WriteLine(e.Message);

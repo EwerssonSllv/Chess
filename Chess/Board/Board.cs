@@ -16,11 +16,11 @@
             pieces = new Piece[lines, column];
         }
 
-        public Piece piece(int line, int column) {
+        public Piece Piece(int line, int column) {
             return pieces[line, column];
         }
 
-        public Piece piece(Position position) {
+        public Piece Piece(Position position) {
             return pieces[position.line, position.column];
         }
 
@@ -36,13 +36,27 @@
 
         public bool hasPiece(Position position) {
 
-            validatePosition(position);
+            ValidatePosition(position);
 
-            return piece(position) != null;
+            return Piece(position) != null;
 
         }
 
-        public bool validPosition(Position position) {
+        public Piece RemovePiece(Position position) {
+
+            Piece aux = Piece(position);
+
+            if (aux == null) {
+                return null;
+            }
+
+            aux.position = null;
+            pieces[position.line, position.column] = null;
+            return aux;
+        }
+
+
+        public bool ValidPosition(Position position) {
 
             if (position.line < 0 || position.column < 0 || position.column > column || position.line > lines) {
                 return false;
@@ -50,8 +64,8 @@
             return true;
         }
 
-        public void validatePosition(Position position) {
-            if (!validPosition(position)){
+        public void ValidatePosition(Position position) {
+            if (!ValidPosition(position)){
                 throw new BoardException("Invalid position");
             }
         }

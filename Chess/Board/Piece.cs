@@ -21,6 +21,10 @@
             this.board = board;
         }
 
+        public void updateNumOfMoves() {
+            numOfMoves++;
+        }
+
 
     }
 }
