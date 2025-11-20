@@ -17,12 +17,43 @@
         }
 
         public Piece piece(int line, int column) {
-            return pieces[line, column];    
+            return pieces[line, column];
+        }
+
+        public Piece piece(Position position) {
+            return pieces[position.line, position.column];
         }
 
         public void Place(Piece p, Position pos) {
-            pieces[pos.line, pos.column] = p;
-            p.position = pos;
+
+            if (hasPiece(pos)) {
+                throw new BoardException("There is already a piece in this position.");
+            }
+                pieces[pos.line, pos.column] = p;
+                p.position = pos;
+            
+        }
+
+        public bool hasPiece(Position position) {
+
+            validatePosition(position);
+
+            return piece(position) != null;
+
+        }
+
+        public bool validPosition(Position position) {
+
+            if (position.line < 0 || position.column < 0 || position.column > column || position.line > lines) {
+                return false;
+            }
+            return true;
+        }
+
+        public void validatePosition(Position position) {
+            if (!validPosition(position)){
+                throw new BoardException("Invalid position");
+            }
         }
 
     }

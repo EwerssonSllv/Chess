@@ -7,16 +7,22 @@ namespace Chess {
     class Program {
         static void Main(string[] args) {
 
-            Board board = new Board(8, 8);
+            try {
 
-            board.Place(new Tower(Color.BLACK, board), new Position(0, 0));
-            board.Place(new Tower(Color.BLACK, board), new Position(2, 3));
-            board.Place(new King(Color.BLACK, board), new Position(3, 4));
+                Board board = new Board(8, 8);
 
-            Screen.printBoard(board);
+                board.Place(new Tower(Color.BLACK, board), new Position(0, 0));
+                board.Place(new Tower(Color.BLACK, board), new Position(2, 9));
+                board.Place(new King(Color.BLACK, board), new Position(0, 2));
 
+                Screen.printBoard(board);
 
-            Console.ReadLine();
+            } catch (BoardException e) {
+
+                Console.WriteLine(e.Message);
+
+            }
+
 
         }
     }
