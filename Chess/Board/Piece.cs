@@ -14,13 +14,12 @@
             get; protected set;
         }
 
-        public Piece(Position position, Color color, int numOfMoves, Board board) {
-            this.position = position;
+        public Piece(Color color, Board board) {
+            this.position = null;
             this.color = color;
             this.numOfMoves = 0;
             this.board = board;
         }
-
 
 
     }
