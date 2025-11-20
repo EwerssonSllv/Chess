@@ -1,7 +1,4 @@
-﻿
-using System.Runtime.InteropServices;
-
-namespace Board {
+﻿namespace board {
     internal class Position {
         public int line {
             get; set;
@@ -18,7 +15,6 @@ namespace Board {
         public override string ToString() {
             return line + ", " + column;
         }
-
 
     }
 }
