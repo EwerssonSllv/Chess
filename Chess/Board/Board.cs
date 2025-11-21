@@ -1,4 +1,6 @@
-﻿namespace board {
+﻿using System.Drawing;
+
+namespace board {
     internal class Board {
         public int lines {
             get; set;
@@ -26,15 +28,14 @@
 
         public void Place(Piece p, Position pos) {
 
-            if (hasPiece(pos)) {
+            if (HasPiece(pos)) {
                 throw new BoardException("There is already a piece in this position.");
             }
                 pieces[pos.line, pos.column] = p;
-                p.position = pos;
-            
+                p.position = pos;  
         }
 
-        public bool hasPiece(Position position) {
+        public bool HasPiece(Position position) {
 
             ValidatePosition(position);
 
@@ -55,20 +56,18 @@
             return aux;
         }
 
-
         public bool ValidPosition(Position position) {
-
-            if (position.line < 0 || position.column < 0 || position.column > column || position.line > lines) {
-                return false;
-            }
-            return true;
+            return position.line >= 0 &&
+                   position.line < lines &&
+                   position.column >= 0 &&
+                   position.column < column;
         }
+
 
         public void ValidatePosition(Position position) {
             if (!ValidPosition(position)){
                 throw new BoardException("Invalid position");
             }
         }
-
     }
 }

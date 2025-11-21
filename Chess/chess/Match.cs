@@ -22,7 +22,7 @@ namespace chess {
 
         public void Move(Position origin, Position destiny) {
             Piece piece = board.RemovePiece(origin);
-            piece.updateNumOfMoves();
+            piece.UpdateNumOfMoves();
             Piece capturedPiece = board.RemovePiece(destiny);
             board.Place(piece, destiny);
         }

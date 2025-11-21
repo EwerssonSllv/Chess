@@ -15,19 +15,25 @@ namespace Chess {
                 while (!match.ending) {
 
                     Console.Clear();
+                    Screen.PrintBoard(match.board); 
 
-                    Screen.PrintBoard(match.board);
-
+                    Console.WriteLine();
                     Console.Write("Origin: ");
                     Position origin = Screen.ReadChessPosition().ToPosition();
+
+                    bool[,] pmoves = match.board.Piece(origin).PossibleMoviments();
+
+                    Console.Clear();
+                    Screen.PrintBoard(match.board, pmoves); 
+                    Console.WriteLine();
                     Console.Write("Destiny: ");
                     Position destiny = Screen.ReadChessPosition().ToPosition();
-
 
                     match.Move(origin, destiny);
                 }
 
-            } catch(BoardException e) {
+
+            } catch (BoardException e) {
                 Console.WriteLine(e.Message);
             }
 

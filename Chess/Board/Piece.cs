@@ -1,5 +1,5 @@
 ﻿namespace board {
-    internal class Piece {
+    internal abstract class Piece {
         public Position position {
             get; set;
         }
@@ -21,10 +21,11 @@
             this.board = board;
         }
 
-        public void updateNumOfMoves() {
+        public void UpdateNumOfMoves() {
             numOfMoves++;
         }
 
+        public abstract bool[,] PossibleMoviments();
 
     }
 }
