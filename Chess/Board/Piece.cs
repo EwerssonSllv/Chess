@@ -27,5 +27,25 @@
 
         public abstract bool[,] PossibleMoviments();
 
+        public bool CanMoveFor(Position position) {
+
+            return PossibleMoviments()[position.line, position.column];
+
+        }
+
+        public bool MovimentIsPossible() {
+            bool[,] mat = PossibleMoviments();
+            for (int i = 0; i < board.lines; i++) {
+                for (int j = 0; j < board.column; j++) {
+                    if (mat[i, j]) {
+
+                        return true;
+
+                    }
+                }
+            }
+            return false;
+        }
+
     }
 }
